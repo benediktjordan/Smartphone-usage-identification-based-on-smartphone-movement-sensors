@@ -1,3 +1,12 @@
+# This repo is about a project which tries to identify if phone users use their
+# smartphone actively (i.e. typing) or passively (i.e. just holding it in their
+# hand) based on sensor data.
+
+# This project is based on the paper and dataset Zhuo et al. (2019): Real-time Smartphone Activity Classification Using Inertial Sensors—Recognition of Scrolling, Typing, and Watching Videos While Sitting or Walking
+## Paper: https://www.mdpi.com/1424-8220/20/3/655
+## Dataset: https://www.mdpi.com/1424-8220/20/3/655/s1
+
+# If you have any questions don´t hesitate to contact me through benedikt.jordan@posteo.de
 #region import
 import pandas as pd
 import os
