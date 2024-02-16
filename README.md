@@ -1,4 +1,4 @@
-# Activity Recognition Model: Parameter Tuning and Prediction Evaluation
+# Identification of Smartphone Activities Based on Smartphone Movement Sensors
 
 ## Overview
 
@@ -29,7 +29,7 @@ classifier.
 
 However, there are areas where the model can confuse certain activities with others, such as Sitting_Idle with Sitting_Scroll and Walking_Idle with Walking_Scroll, where the latter activities in both pairs were mistaken for the former ones in a noticeable number of instances.
 
-![alt text]()
+![alt text](https://github.com/benediktjordan/Smartphone-usage-identification-based-on-smartphone-movement-sensors/blob/34050217db157a692c798a466181e107f297442f/img/ConfusionMatrix.png)
 
 ### Important Features
 
@@ -41,7 +41,7 @@ The SHAP values highlight the most influential features in the model's predictio
 
 These features appear to have the most substantial impact on the model's decisions, with the Acceleration Y Change Quantiles being particularly prominent. The detailed SHAP values graph indicates that the model relies on a combination of sensor data capturing movement dynamics and statistical features derived from the sensor signals to make its predictions.
 
-![alt text]()
+![alt text](https://github.com/benediktjordan/Smartphone-usage-identification-based-on-smartphone-movement-sensors/blob/34050217db157a692c798a466181e107f297442f/img/SHAPValues.png)
 
 In conclusion, the model exhibits a promising ability to differentiate between various smartphone usage states with a set of key features providing the most predictive power. Continued refinement and training could further improve its performance, especially in distinguishing closely related activities.
 
