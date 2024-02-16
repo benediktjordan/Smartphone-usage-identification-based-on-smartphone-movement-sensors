@@ -35,8 +35,8 @@ from coremltools.converters import sklearn
 
 #region load data
 #region transform all 5 Hz and 50 Hz data into two dataframes
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/datasets/zhuo_paper/"
-path_to_store = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/dataset/"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/datasets/zhuo_paper/"
+path_to_store = "C:/Users/bened/Documents/Arbeit\WellspentWork/SmartphoneActivityIdentification/data_analysis/dataset/"
 frequencies = ["5Hz", "50Hz"]
 for frequency in frequencies:
     print("started with frequency " + frequency + " data...")
@@ -62,12 +62,16 @@ for frequency in frequencies:
             df_all = pd.concat([df_all, df], axis=0)
     # store df_all
     df_all.to_csv(path_to_store + frequency + "_data.csv", index=False)
+
+
+
+
 #endregion
 
 #endregion
 
 #region data exploration
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/dataset/"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/dataset/"
 df_5Hz = pd.read_csv(path_storage + "5Hz_data.csv")
 df_50Hz = pd.read_csv(path_storage + "50Hz_data.csv")
 
@@ -81,8 +85,8 @@ df_5Hz["datetime"] = pd.to_datetime(df_5Hz["time"], format="%H:%M:%S.%f")
 #region data preparation
 #region preprocessing: drop duplicates and transform time column
 frequencies = ["5Hz", "50Hz"]
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/dataset/"
-path_to_store = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/preprocessed_data/"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/dataset/"
+path_to_store = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/preprocessed_data/"
 for frequency in frequencies:
     print("started with frequency " + frequency + " data...")
     df = pd.read_csv(path_storage + frequency + "_data.csv")
@@ -131,8 +135,8 @@ exclusion_threshold_feature_segments = 0.6  # if less than xx% of the data is av
 label_column_name = "activity"
 
 sensor_sets_to_extract = [["accelerometer", "rotation", "gravity"]]
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/preprocessed_data/"
-path_to_store = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/preprocessed_data/"
+path_to_store = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
 
 for sensor_frequency in frequencies:
     ## run feature extraction in chunks
@@ -281,8 +285,8 @@ feature_segments = [1, 2, 5, 10, 15, 30, 60]  # in seconds
 frequencies = [5]
 feature_segments = [1]  # in seconds
 
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
-path_to_store = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
+path_to_store = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
 chunksize_counter = 8
 sensor_sets_to_extract = [["accelerometer", "rotation", "gravity"]]
 
@@ -333,8 +337,8 @@ for sensor_frequency in frequencies:
 #endregion
 
 #region feature selection with tsfresh algorithm
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
-path_to_store = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
+path_to_store = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
 label_column_name = "activity"
 feature_segments = [60,30,15, 10, 5,2,1] # second 1 is excluded as my system always crushes
 sensor_set = ["accelerometer", "rotation", "gravity"]
@@ -407,8 +411,8 @@ combination_sensors = ["accelerometer", "rotation", "gravity"]
 frequencies = [5, 50]
 label_column_name = "activity"
 
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
-path_to_store = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/FeatureSegmentComparison/"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
+path_to_store = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/FeatureSegmentComparison/"
 
 n_permutations = 0 # define number of permutations; better 1000
 # if label classes should be joint -> define in label mapping
@@ -564,6 +568,7 @@ df_decisionforest_results_all.to_csv(path_to_store + "parameter_tuning-" + param
 #endregion
 
 #region visualize results
+#TODO this code seems not to be adapted to this project yet (is a copy from the master thesis)
 datasets = ["Data-Driven", "Theory-Driven"]
 label_segments = [45, 90]
 parameter_tuning = "no"
@@ -667,6 +672,7 @@ fig.savefig("/Users/benediktjordan/Documents/MTS/Iteration01/human_motion/data_a
 
 
 # visualizing performances of the different DF (balanced accuracy & F1 score)
+
 label_segment = 90
 parameter_tuning = "no"
 df_results = pd.read_csv("/Users/benediktjordan/Documents/MTS/Iteration01/human_motion/data_analysis/decision_forest/timeperiod_around_event-" + str(label_segment) + "-GPS_parameter_tuning-" + parameter_tuning + "_results_overall.csv")
@@ -728,8 +734,8 @@ combination_sensors = ["accelerometer", "rotation", "gravity"]
 frequencies = [5]
 label_column_name = "activity"
 
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
-path_to_store = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/HyperparameterTuning/"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
+path_to_store = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/HyperparameterTuning/"
 title_confusion_matrix = "Confusion Matrix"
 title_feature_importance_grid = "SHAP Feature Importance"
 
@@ -905,6 +911,8 @@ df_decisionforest_results_all.to_csv(path_to_store + "parameter_tuning-" + param
 #endregion
 
 #region visualize results
+#TODO this section seems not to be adapted to this project yet (still copy from master thesis)
+
 datasets = ["Data-Driven", "Theory-Driven"]
 label_segments = [45, 90]
 parameter_tuning = "no"
@@ -1008,6 +1016,7 @@ fig.savefig("/Users/benediktjordan/Documents/MTS/Iteration01/human_motion/data_a
 
 
 # visualizing performances of the different DF (balanced accuracy & F1 score)
+
 label_segment = 90
 parameter_tuning = "no"
 df_results = pd.read_csv("/Users/benediktjordan/Documents/MTS/Iteration01/human_motion/data_analysis/decision_forest/timeperiod_around_event-" + str(label_segment) + "-GPS_parameter_tuning-" + parameter_tuning + "_results_overall.csv")
@@ -1060,6 +1069,8 @@ plt.tight_layout()
 plt.savefig("/Users/benediktjordan/Documents/MTS/Iteration01/human_motion/data_analysis/decision_forest/timeperiod_around_event-" + str(label_segment) + "-GPS_parameter_tuning-" + parameter_tuning + "_results_overall_visualization.png",
             bbox_inches="tight", dpi= 300)
 #endregion
+
+#endregion
 #endregion
 
 #region create deployment model
@@ -1071,8 +1082,8 @@ combination_sensors = ["accelerometer", "rotation", "gravity"]
 frequency = 50
 label_column_name = "activity"
 
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
-path_to_store = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/DeploymentModel/"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
+path_to_store = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/DeploymentModel/"
 title_confusion_matrix = "Confusion Matrix"
 title_feature_importance_grid = "SHAP Feature Importance"
 
@@ -1151,9 +1162,9 @@ pickle.dump(model, open(
 #endregion
 
 #region convert into CoreML model
-path_storage = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
-path_to_store = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/DeploymentModel/"
-path_model = "/Users/benediktjordan/Documents/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/DeploymentModel/activity_sensors-['accelerometer', 'rotation', 'gravity']_sampling-rate-50_feature-segment-15_FinalDeploymentModel.sav"
+path_storage = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/data_preparation/features/"
+path_to_store = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/DeploymentModel/"
+path_model = "C:/Users/bened/Documents/Arbeit/WellspentWork/SmartphoneActivityIdentification/data_analysis/modeling/DeploymentModel/activity_sensors-['accelerometer', 'rotation', 'gravity']_sampling-rate-50_feature-segment-15_FinalDeploymentModel.sav"
 label_column_name = "activity"
 frequency = 50
 feature_segment = 15
