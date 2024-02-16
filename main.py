@@ -2,6 +2,8 @@
 # smartphone actively (i.e. typing) or passively (i.e. just holding it in their
 # hand) based on sensor data.
 
+#test
+
 # This project is based on the paper and dataset Zhuo et al. (2019): Real-time Smartphone Activity Classification Using Inertial Sensors—Recognition of Scrolling, Typing, and Watching Videos While Sitting or Walking
 ## Paper: https://www.mdpi.com/1424-8220/20/3/655
 ## Dataset: https://www.mdpi.com/1424-8220/20/3/655/s1
